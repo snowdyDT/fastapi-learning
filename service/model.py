@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import List
 
 
 class Todo(BaseModel):
@@ -21,5 +22,23 @@ class TodoItem(BaseModel):
         schema_extra = {
             "example": {
                 "item": "Model for the request body for the UPDATE route"
+            }
+        }
+
+
+class TodoItems(BaseModel):
+    todos: List[TodoItem]
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "todos": [
+                    {
+                        "item": "First item"
+                    },
+                    {
+                        "item": "Second item"
+                    }
+                ]
             }
         }
